@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 
 namespace Persistence.Contexts
 {
@@ -8,6 +9,10 @@ namespace Persistence.Contexts
         {
             //Controla que EFCore va a mantener toda la información sobre una instancia de la entidad en su rastreador de cambios
             ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
+        }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         }
     }
 }
