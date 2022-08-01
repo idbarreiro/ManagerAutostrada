@@ -12,4 +12,11 @@
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Features\Productos\Commands\DeleteProductoCommand\" />
+    <Folder Include="Features\Productos\Commands\UpdateProductoCommand\" />
+    <Folder Include="Features\Productos\Queries\GetAllProductos\" />
+    <Folder Include="Features\Productos\Queries\GetProductoByCodigo\" />
+  </ItemGroup>
+
 </Project>
