@@ -1,4 +1,6 @@
 ﻿using Application.Features.Productos.Commands.CreateProductoCommand;
+using Application.Features.Productos.Commands.DeleteProductoCommand;
+using Application.Features.Productos.Commands.UpdateProductoCommand;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -19,6 +21,19 @@ namespace WebAPI.Controllers
         public async Task<ActionResult> Post(CreateProductoCommand command)
         {
             return Ok(await Mediator.Send(command));
+        }
+
+        //PUT api/<controller>
+        [HttpPut]
+        public async Task<ActionResult> Put(UpdateProductoCommand command)
+        {
+            return Ok(await Mediator.Send(command));
+        }
+
+        [HttpDelete("{codigo}")]
+        public async Task<ActionResult> Delete(int codigo)
+        {
+            return Ok(await Mediator.Send(new DeleteProductoCommand { Codigo = codigo }));
         }
     }
 }
