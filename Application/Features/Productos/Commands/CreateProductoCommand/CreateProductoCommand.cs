@@ -31,7 +31,9 @@ namespace Application.Features.Productos.Commands.CreateProductoCommand
 
         public async Task<Response<int>> Handle(CreateProductoCommand request, CancellationToken cancellationToken)
         {
+            
             var nuevoRegistro = _mapper.Map<Producto>(request);
+            nuevoRegistro.Estado = "Activo";
             var data = await _repositoryAsync.AddAsync(nuevoRegistro);
 
             return new Response<int>(data.Codigo);

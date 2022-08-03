@@ -1,4 +1,5 @@
-﻿using FluentValidation;
+﻿using Application.Behaviours;
+using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
@@ -17,6 +18,8 @@ namespace Application
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
             //Registre automaticamente los mediadores que se implementen en esta biblioteca de clases
             services.AddMediatR(Assembly.GetExecutingAssembly());
+            //Pipeline que valida el flujo a traves del patron mediator
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
         }
     }
 }
